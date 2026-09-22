@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presidência Fighters — Arcade</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="game">
+<header class="header">
+  <div>
+    <div class="mini">BRASÍLIA · ARCADE SYSTEM</div>
+    <h1>PRESIDÊNCIA <b>FIGHTERS</b></h1>
+  </div>
+  <div class="credit">CREDIT 01</div>
+</header>
+
+<section id="menu" class="screen active">
+  <div class="hero">
+    <div class="mini">SELECT MODE</div>
+    <h2>ESCOLHA O MODO</h2>
+    <div class="modes">
+      <button class="mode selected" data-mode="arcade"><strong>ARCADE</strong><span>12 DESAFIOS · CAMINHO ATÉ A FINAL</span></button>
+      <button class="mode" data-mode="duel"><strong>DUELO LIVRE</strong><span>UMA LUTA · CPU</span></button>
+      <button class="mode" data-mode="versus"><strong>VERSUS 2P</strong><span>DOIS JOGADORES NO MESMO PC</span></button>
+    </div>
+    <p class="notice">Paródia/jogo fictício. Os golpes, atributos e resultados não representam características reais dos candidatos.</p>
+  </div>
+</section>
+
+<section id="select" class="screen">
+  <div class="selectHead">
+    <div>
+      <div class="mini">PLAYER 1 · <span id="selectMode">ARCADE</span></div>
+      <h2>ESCOLHA SEU LUTADOR</h2><p class="selectLife">Cada lutador começa com <b>500 HP</b> · toque no retrato para selecionar</p>
+    </div>
+    <div class="selectNav"><div class="legend" id="selectHint">SETAS · ESCOLHER &nbsp; | &nbsp; ENTER · CONFIRMAR &nbsp; | &nbsp; ESC · VOLTAR</div><button id="changeModeSelect" class="smallNav">TROCAR MODO</button></div>
+  </div>
+  <div id="roster" class="roster"></div>
+</section>
+
+<section id="route" class="screen">
+  <div class="routeHead">
+    <div class="mini">ARCADE TOUR</div>
+    <h2>O CAMINHO ATÉ A FINAL</h2>
+    <p>12 confrontos. Cada vitória libera a próxima sessão.</p>
+  </div>
+  <div id="routeGrid" class="routeGrid"></div>
+  <div class="routeActions"><button id="startStage" class="primary">COMEÇAR FASE · ENTER</button><button id="changeModeRoute" class="smallNav">TROCAR MODO</button></div>
+</section>
+
+<section id="fight" class="screen">
+  <div class="hud">
+    <div class="fighterHud">
+      <div class="name"><b id="pName"></b><span id="pTag"></span></div>
+      <div class="bar"><i id="pHp"></i></div><div class="bar energy"><i id="pEn"></i></div>
+    </div>
+    <div class="round">ROUND<br><b id="roundNo">1</b><br><span class="roundScore"><b id="pRounds">0</b> - <b id="cpuRounds">0</b></span><br><small>BO3</small><br><small id="stageNo">STAGE 1/12</small></div>
+    <div class="fighterHud right">
+      <div class="name"><span id="cpuTag"></span><b id="cpuName"></b></div>
+      <div class="bar"><i id="cpuHp"></i></div><div class="bar energy"><i id="cpuEn"></i></div>
+    </div>
+  </div>
+  <div class="arena">
+    <canvas id="canvas" width="1200" height="620"></canvas>
+    <div id="callout"></div>
+    <div id="roundBanner">ROUND 1</div>
+  </div>
+  <div class="controls">
+    <div><kbd>← →</kbd><span>P1 MOVER</span></div>
+    <div><kbd>↑</kbd><span>PULAR</span></div>
+    <div><kbd>A</kbd><span>SOCO</span></div>
+    <div><kbd>S</kbd><span>CHUTE</span></div>
+    <div><kbd>D</kbd><span>PODER</span></div>
+    <div><kbd>Z</kbd><span>DEFESA</span></div>
+    <div class="sup"><kbd>X</kbd><span>SUPREMO</span></div>
+  </div>
+  <div class="p2hint">VERSUS 2P: J/K/L/I = mover/pular · 1 SOCO · 2 CHUTE · 3 PODER · 4 DEFESA · 5 SUPREMO</div>
+  <div class="touch" aria-label="Controles de toque">
+    <div class="touchMove">
+      <button class="touchBtn move left" data-k="ArrowLeft" aria-label="Mover para esquerda">◀</button>
+      <button class="touchBtn move right" data-k="ArrowRight" aria-label="Mover para direita">▶</button>
+      <button class="touchBtn jump" data-k="ArrowUp" aria-label="Pular">▲<small>PULO</small></button>
+    </div>
+    <div class="touchActions">
+      <button class="touchBtn attack" data-k="a">SOCO</button>
+      <button class="touchBtn attack" data-k="s">CHUTE</button>
+      <button class="touchBtn power" data-k="d">PODER</button>
+      <button class="touchBtn guard" data-k="z">DEFESA</button>
+      <button class="touchBtn sup" data-k="x">SUPREMO</button>
+    </div>
+  </div>
+</section>
+
+<section id="result" class="screen result">
+  <div class="resultBox">
+    <div class="mini" id="resultMini">ARCADE</div>
+    <h2 id="resultTitle"></h2>
+    <p id="resultText"></p>
+    <div id="resultButtons"></div>
+  </div>
+</section>
+
+<footer>Presidência Fighters · projeto educacional · personagens e habilidades fictícios</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
